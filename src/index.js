@@ -50,13 +50,13 @@ app.put("/api/student/:id",(req,res)=>{
     if(body){
     for(let i=0;i<stu.length;i++){
         if(stu[i].id===id&& body.name&& body.currentClass&&body.division){
-            if(body.name){
+            if(body.name!==stu[i].name){
                 stu[i].name=body.name;
             }
-             if(body.currentClass){
-                 stu[i].currentClass=Numbar(body.currentClass);
+             if(Number(body.currentClass)!==stu[i].currentClass){
+                 stu[i].currentClass=Number(body.currentClass);
              }
-             if(body.division){
+             if(body.division!== stu[i].division){
                  stu[i].division=body.division;
              }
             sig=true;
