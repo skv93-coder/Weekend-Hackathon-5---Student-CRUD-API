@@ -32,6 +32,7 @@ const body=req.body;
 console.log(body);
 if(body.name&&body.currentClass&&body.division){
     ptr++;
+    body.currentClass=Number(body.currentClass);
     let student={id:ptr,...body};
     stu.push(student);
     res.send(student);
@@ -52,7 +53,7 @@ app.put("/api/student/:id",(req,res)=>{
                 stu[i].name=body.name;
             }
             if(body.currentClass){
-                stu[i].currentClass=body.currentClass;
+                stu[i].currentClass=Numbar(body.currentClass);
             }
             if(body.division){
                 stu[i].division=body.division;
