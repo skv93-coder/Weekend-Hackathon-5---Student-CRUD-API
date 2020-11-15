@@ -48,11 +48,20 @@ app.put("/api/student/:id",(req,res)=>{
     stu=stu.filter((st)=>st.id!==id?st:req.body);
     for(let i=0;i<stu.length;i++){
         if(stu[i].id===id){
+            if(body.name){
+                stu[i].name=body.name;
+            }
+            if(body.currentClass){
+                stu[i].currentClass=body.currentClass;
+            }
+            if(body.division){
+                stu[i].division=body.division;
+            }
             sig=true;
         }
     }
     
-    if(body.name&&body.currentClass&&body.division&&id&&sig){
+    if(sig){
         res.send(body);
     }else{
         res.sendStatus(400)
@@ -76,7 +85,7 @@ app.delete("/api/student/:id",(req,res)=>{
     if(sig){
         res.send(stu);
     }else{
-        res.sendStatus(400)
+        res.sendStatus(404)
             .send();
     }
 })
