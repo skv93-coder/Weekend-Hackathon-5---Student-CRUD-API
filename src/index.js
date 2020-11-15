@@ -33,7 +33,7 @@ console.log(body);
 if(body.name&&body.currentClass&&body.division){
     ptr++;
     body.currentClass=Number(body.currentClass);
-    let student={id:ptr,...body};
+    let student={"id":ptr,...body};
     stu.push(student);
     res.send(student);
 
@@ -46,7 +46,8 @@ app.put("/api/student/:id",(req,res)=>{
     const id=parseInt(req.params.id);
     const body=req.body;
     let sig=false;
-    stu=stu.filter((st)=>st.id!==id?st:req.body);
+   // stu=stu.filter((st)=>st.id!==id?st:req.body);
+    
     for(let i=0;i<stu.length;i++){
         if(stu[i].id===id){
             if(body.name){
